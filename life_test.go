@@ -14,5 +14,10 @@ func TestNewGrid(t *testing.T) {
 		if len(grid.data[i]) != 3 {
 			t.Errorf("Expected 3 but got %d\n", len(grid.data[i]))
 		}
+		for j := 0; j < int(grid.size); j++ {
+			if grid.data[i][j] {
+				t.Errorf("Expected false bt got true")
+			}
+		}
 	}
 }
