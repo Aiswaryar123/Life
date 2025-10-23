@@ -19,17 +19,23 @@ func RunGeneration(g Grid) Grid {
 }
 
 func NewGrid(size uint) Grid {
-	return Grid{
+	grid := Grid{
 		size: int(size),
 		data: make([][]bool, size),
 	}
+
+	for i := range grid.data {
+		grid.data[i] = make([]bool, size)
+	}
+
+	return grid
 }
 
 func main() {
-	grid := NewGrid(10)
+	grid := NewGrid(3)
 	fmt.Println(grid)
-	for {
-		grid = RunGeneration(grid)
-		fmt.Println(DisplayGrid(grid))
-	}
+	// for {
+	// 	grid = RunGeneration(grid)
+	// 	fmt.Println(DisplayGrid(grid))
+	// }
 }
