@@ -152,3 +152,35 @@ func TestNeighbourTopedge(t *testing.T) {
 		t.Error("Expected", Expected, "bt got", actual)
 	}
 }
+func TestNeighbourBottomedge(t *testing.T) {
+	grid := NewGrid(4, 0, 3)
+	actual := CountAliveneighbours(3, 1, grid)
+	Expected := uint(1)
+	if actual != Expected {
+		t.Error("Expected", Expected, "bt got", actual)
+	}
+	grid = NewGrid(4, 0, 3, 2, 0)
+	actual = CountAliveneighbours(3, 1, grid)
+	Expected = uint(2)
+	if actual != Expected {
+		t.Error("Expected", Expected, "bt got", actual)
+	}
+	grid = NewGrid(4, 0, 3, 2, 0, 2, 1)
+	actual = CountAliveneighbours(3, 1, grid)
+	Expected = uint(3)
+	if actual != Expected {
+		t.Error("Expected", Expected, "bt got", actual)
+	}
+	grid = NewGrid(4, 0, 3, 2, 0, 2, 1, 2, 2)
+	actual = CountAliveneighbours(3, 1, grid)
+	Expected = uint(4)
+	if actual != Expected {
+		t.Error("Expected", Expected, "bt got", actual)
+	}
+	grid = NewGrid(4, 0, 3, 2, 0, 2, 1, 2, 2, 3, 2)
+	actual = CountAliveneighbours(3, 1, grid)
+	Expected = uint(5)
+	if actual != Expected {
+		t.Error("Expected", Expected, "bt got", actual)
+	}
+}
