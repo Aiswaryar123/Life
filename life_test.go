@@ -21,3 +21,13 @@ func TestNewGrid(t *testing.T) {
 		}
 	}
 }
+func TestDisplayGrid(t *testing.T) {
+	grid := NewGrid(3)
+	grid.data[0][1] = true
+	grid.data[2][2] = true
+	expected := ".#.\n...\n..#\n"
+	result := DisplayGrid(grid)
+	if result != expected {
+		t.Error("Expected", expected, "but got", result)
+	}
+}
