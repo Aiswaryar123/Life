@@ -60,3 +60,23 @@ func TestNeighbourTopleftCorner(t *testing.T) {
 		t.Error("Expected", Expected, "bt got", actual)
 	}
 }
+func TestNeighbourToprightCorner(t *testing.T) {
+	grid := NewGrid(4, 0, 3, 0, 2)
+	actual := CountAliveneighbours(0, 3, grid)
+	Expected := uint(1)
+	if actual != Expected {
+		t.Error("Expected", Expected, "bt got", actual)
+	}
+	grid = NewGrid(4, 0, 3, 0, 2, 1, 2)
+	actual = CountAliveneighbours(0, 3, grid)
+	Expected = uint(2)
+	if actual != Expected {
+		t.Error("Expected", Expected, "bt got", actual)
+	}
+	grid = NewGrid(4, 0, 3, 0, 2, 1, 2, 1, 3)
+	actual = CountAliveneighbours(0, 3, grid)
+	Expected = uint(3)
+	if actual != Expected {
+		t.Error("Expected", Expected, "bt got", actual)
+	}
+}
