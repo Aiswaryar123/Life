@@ -16,7 +16,11 @@ func NewGrid(size uint, live ...int) Grid {
 	for i := range grid.data {
 		grid.data[i] = make([]bool, size)
 	}
-
+	for i := 0; i < len(live); i = i + 2 {
+		x := live[i]
+		y := live[i+1]
+		grid.data[x][y] = true
+	}
 	return grid
 
 }
