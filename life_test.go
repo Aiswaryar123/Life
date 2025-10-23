@@ -40,16 +40,23 @@ func TestDisplayGrid(t *testing.T) {
 	}
 }
 
-// func TestNeighbourTopleftCorner(t *testing.T) {
-// 	grid := NewGrid(3)
-// 	grid.data[0][0] = true
-// 	grid.data[0][1] = true
-// 	grid.data[1][1] = true
-// 	actual := CountAliveneighbours(0, 0, grid)
-// 	expected := uint(2)
-
-// 	if actual != expected {
-// 		t.Errorf("Expected %d but got %d", expected, actual)
-
-// 	}
-// }
+func TestNeighbourTopleftCorner(t *testing.T) {
+	grid := NewGrid(4, 0, 0, 0, 1)
+	actual := CountAliveneighbours(0, 0, grid)
+	Expected := uint(1)
+	if actual != Expected {
+		t.Error("Expected", Expected, "bt got", actual)
+	}
+	grid = NewGrid(4, 0, 0, 0, 1, 1, 1)
+	actual = CountAliveneighbours(0, 0, grid)
+	Expected = uint(2)
+	if actual != Expected {
+		t.Error("Expected", Expected, "bt got", actual)
+	}
+	grid = NewGrid(4, 0, 0, 0, 1, 1, 0, 1, 1)
+	actual = CountAliveneighbours(0, 0, grid)
+	Expected = uint(3)
+	if actual != Expected {
+		t.Error("Expected", Expected, "bt got", actual)
+	}
+}
