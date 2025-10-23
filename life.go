@@ -7,7 +7,7 @@ type Grid struct {
 	data [][]bool
 }
 
-func NewGrid(size uint) Grid {
+func NewGrid(size uint, live ...int) Grid {
 	grid := Grid{
 		size: int(size),
 		data: make([][]bool, size),
@@ -35,9 +35,24 @@ func DisplayGrid(g Grid) string {
 	return result
 }
 
-func CountAliveneighbours(x, y uint, size uint) uint {
-	return 0
-}
+// func CountAliveneighbours(x uint, y uint, grid Grid) uint {
+// 	count := 0
+// 	if x == 0 && y == 0 {
+// 		if grid.data[x][y+1] {
+// 			count++
+// 		}
+// 		if grid.data[x+1][y] {
+// 			count++
+// 		}
+// 		if grid.data[x+1][y+1] {
+// 			count++
+// 		}
+// 		return uint(count)
+// 	}
+
+// 	return 0
+
+// }
 func RunGeneration(g Grid) Grid {
 	return g
 

@@ -1,9 +1,11 @@
 package main
 
-import "testing"
+import (
+	"testing"
+)
 
 func TestNewGrid(t *testing.T) {
-	grid := NewGrid(3)
+	grid := NewGrid(3, 0, 0, 0, 1)
 	if grid.size != 3 {
 		t.Errorf("Expected 3 but got %d\n", grid.size)
 	}
@@ -15,12 +17,18 @@ func TestNewGrid(t *testing.T) {
 			t.Errorf("Expected 3 but got %d\n", len(grid.data[i]))
 		}
 		for j := 0; j < int(grid.size); j++ {
-			if grid.data[i][j] {
-				t.Errorf("Expected false bt got true")
+			Expected := false
+			if i == 0 && j == 0 || i == 0 && j == 1 {
+				Expected = true
 			}
+			if grid.data[i][j] != Expected {
+				t.Error("expected", Expected, "but got", grid.data[i][j])
+			}
+
 		}
 	}
 }
+
 func TestDisplayGrid(t *testing.T) {
 	grid := NewGrid(3)
 	grid.data[0][1] = true
@@ -31,3 +39,17 @@ func TestDisplayGrid(t *testing.T) {
 		t.Error("Expected", expected, "but got", result)
 	}
 }
+
+// func TestNeighbourTopleftCorner(t *testing.T) {
+// 	grid := NewGrid(3)
+// 	grid.data[0][0] = true
+// 	grid.data[0][1] = true
+// 	grid.data[1][1] = true
+// 	actual := CountAliveneighbours(0, 0, grid)
+// 	expected := uint(2)
+
+// 	if actual != expected {
+// 		t.Errorf("Expected %d but got %d", expected, actual)
+
+// 	}
+// }
