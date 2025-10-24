@@ -123,6 +123,24 @@ func CountAliveneighbours(x uint, y uint, grid Grid) uint {
 
 	return 0
 }
+func RunGeneration(g Grid) Grid {
+	newGrid := NewGrid(uint(g.size))
+
+	for i := 0; i < g.size; i++ {
+		for j := 0; j < g.size; j++ {
+			aliveNeighbours := CountAliveneighbours(uint(i), uint(j), g)
+			cell := g.data[i][j]
+
+			if cell && aliveNeighbours < 2 {
+				newGrid.data[i][j] = false
+			} else {
+				newGrid.data[i][j] = cell
+			}
+		}
+	}
+
+	return newGrid
+}
 
 func main() {
 
