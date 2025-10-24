@@ -128,12 +128,16 @@ func RunGeneration(g Grid) Grid {
 
 	for i := 0; i < g.size; i++ {
 		for j := 0; j < g.size; j++ {
-			aliveNeighbours := CountAliveneighbours(uint(i), uint(j), g)
 			cell := g.data[i][j]
+			aliveNeighbours := CountAliveneighbours(uint(i), uint(j), g)
 
 			if cell && aliveNeighbours < 2 {
 				newGrid.data[i][j] = false
+			} else if cell && (aliveNeighbours == 2 || aliveNeighbours == 3) {
+
+				newGrid.data[i][j] = true
 			} else {
+
 				newGrid.data[i][j] = cell
 			}
 		}

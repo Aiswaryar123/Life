@@ -316,3 +316,14 @@ func TestRunGeneration_Survival(t *testing.T) {
 		t.Error("Expected middle cell (1,1) to survive with 2 neighbors, but it died")
 	}
 }
+func TestRunGeneration_Overpopulation(t *testing.T) {
+
+	grid := NewGrid(3,
+		0, 0, 0, 1, 1, 0, 1, 1, 1, 2,
+	)
+	nextGen := RunGeneration(grid)
+
+	if nextGen.data[1][1] {
+		t.Error("Expected middle cell (1,1) to die due to overpopulation, but it's still alive")
+	}
+}
