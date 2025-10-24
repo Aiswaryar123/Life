@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"time"
+)
 
 type Grid struct {
 	size int
@@ -157,13 +160,15 @@ func RunGeneration(g Grid) Grid {
 }
 
 func main() {
+	fmt.Println("Welcome to Game of Life!")
+	grid := NewGrid(8, 0, 0, 1, 1, 2, 0, 2, 1, 2, 2)
 
-	grid := NewGrid(3)
-	fmt.Println(grid)
-	grid.data[0][1] = true
-	grid.data[2][2] = true
-	// for {
-	// 	grid = RunGeneration(grid)
-	fmt.Println(DisplayGrid(grid))
-	// }
+	fmt.Print(DisplayGrid(grid))
+
+	for {
+		fmt.Print("\033[H\033[2J")
+		fmt.Print(DisplayGrid(grid))
+		time.Sleep(1 * time.Second)
+		grid = RunGeneration(grid)
+	}
 }

@@ -298,7 +298,7 @@ func TestNeighbourMiddlecell(t *testing.T) {
 		t.Error("Expected", Expected, "bt got", actual)
 	}
 }
-func TestRunGeneration_Underpopulation(t *testing.T) {
+func TestRunGenerationUnderpopulation(t *testing.T) {
 
 	grid := NewGrid(3, 1, 1)
 	nextGen := RunGeneration(grid)
@@ -307,7 +307,7 @@ func TestRunGeneration_Underpopulation(t *testing.T) {
 		t.Error("Expected cell (1,1) to die due to underpopulation, but it's still alive")
 	}
 }
-func TestRunGeneration_Survival(t *testing.T) {
+func TestRunGenerationSurvival(t *testing.T) {
 
 	grid := NewGrid(3, 0, 1, 1, 1, 2, 1)
 	nextGen := RunGeneration(grid)
@@ -316,7 +316,7 @@ func TestRunGeneration_Survival(t *testing.T) {
 		t.Error("Expected middle cell (1,1) to survive with 2 neighbors, but it died")
 	}
 }
-func TestRunGeneration_Overpopulation(t *testing.T) {
+func TestRunGenerationOverpopulation(t *testing.T) {
 
 	grid := NewGrid(3,
 		0, 0, 0, 1, 1, 0, 1, 1, 1, 2,
@@ -327,7 +327,7 @@ func TestRunGeneration_Overpopulation(t *testing.T) {
 		t.Error("Expected middle cell (1,1) to die due to overpopulation, but it's still alive")
 	}
 }
-func TestRunGeneration_Reproduction(t *testing.T) {
+func TestRunGenerationReproduction(t *testing.T) {
 
 	grid := NewGrid(3, 0, 1, 1, 0, 1, 2)
 
