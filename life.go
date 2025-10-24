@@ -108,6 +108,18 @@ func CountAliveneighbours(x uint, y uint, grid Grid) uint {
 
 		return uint(count)
 	}
+	if x > 0 && x < s && y > 0 && y < s {
+		count += b2i(grid.data[x-1][y-1])
+		count += b2i(grid.data[x-1][y])
+		count += b2i(grid.data[x-1][y+1])
+		count += b2i(grid.data[x][y+1])
+		count += b2i(grid.data[x+1][y+1])
+		count += b2i(grid.data[x+1][y])
+		count += b2i(grid.data[x+1][y-1])
+		count += b2i(grid.data[x][y-1])
+
+		return uint(count)
+	}
 
 	return 0
 }

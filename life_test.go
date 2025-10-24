@@ -281,19 +281,19 @@ func TestNeighbourMiddlecell(t *testing.T) {
 	}
 	grid = NewGrid(4, 0, 0, 0, 1, 0, 2, 1, 2, 2, 2, 2, 1)
 	actual = CountAliveneighbours(1, 1, grid)
-	Expected = uint(5)
+	Expected = uint(6)
 	if actual != Expected {
 		t.Error("Expected", Expected, "bt got", actual)
 	}
 	grid = NewGrid(4, 0, 0, 0, 1, 0, 2, 1, 2, 2, 2, 2, 1, 2, 0)
 	actual = CountAliveneighbours(1, 1, grid)
-	Expected = uint(5)
+	Expected = uint(7)
 	if actual != Expected {
 		t.Error("Expected", Expected, "bt got", actual)
 	}
 	grid = NewGrid(4, 0, 0, 0, 1, 0, 2, 1, 2, 2, 2, 2, 1, 2, 0, 1, 0)
 	actual = CountAliveneighbours(1, 1, grid)
-	Expected = uint(5)
+	Expected = uint(8)
 	if actual != Expected {
 		t.Error("Expected", Expected, "bt got", actual)
 	}
