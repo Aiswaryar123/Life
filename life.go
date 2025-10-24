@@ -111,20 +111,17 @@ func CountAliveneighbours(x uint, y uint, grid Grid) uint {
 
 		return uint(count)
 	}
-	if x > 0 && x < s && y > 0 && y < s {
-		count += b2i(grid.data[x-1][y-1])
-		count += b2i(grid.data[x-1][y])
-		count += b2i(grid.data[x-1][y+1])
-		count += b2i(grid.data[x][y+1])
-		count += b2i(grid.data[x+1][y+1])
-		count += b2i(grid.data[x+1][y])
-		count += b2i(grid.data[x+1][y-1])
-		count += b2i(grid.data[x][y-1])
+	count += b2i(grid.data[x-1][y-1])
+	count += b2i(grid.data[x-1][y])
+	count += b2i(grid.data[x-1][y+1])
+	count += b2i(grid.data[x][y+1])
+	count += b2i(grid.data[x+1][y+1])
+	count += b2i(grid.data[x+1][y])
+	count += b2i(grid.data[x+1][y-1])
+	count += b2i(grid.data[x][y-1])
 
-		return uint(count)
-	}
+	return uint(count)
 
-	return 0
 }
 func RunGeneration(g Grid) Grid {
 	newGrid := NewGrid(uint(g.size))
@@ -166,7 +163,7 @@ func main() {
 	fmt.Print(DisplayGrid(grid))
 
 	for {
-		fmt.Print("\033[H\033[2J")
+		fmt.Print("\033[H\033[2J\033[3J")
 		fmt.Print(DisplayGrid(grid))
 		time.Sleep(1 * time.Second)
 		grid = RunGeneration(grid)
