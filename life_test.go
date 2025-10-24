@@ -298,3 +298,12 @@ func TestNeighbourMiddlecell(t *testing.T) {
 		t.Error("Expected", Expected, "bt got", actual)
 	}
 }
+func TestRunGeneration_Underpopulation(t *testing.T) {
+
+	grid := NewGrid(3, 1, 1)
+	nextGen := RunGeneration(grid)
+
+	if nextGen.data[1][1] {
+		t.Error("Expected cell (1,1) to die due to underpopulation, but it's still alive")
+	}
+}

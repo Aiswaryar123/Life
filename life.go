@@ -49,9 +49,9 @@ func CountAliveneighbours(x uint, y uint, grid Grid) uint {
 	count := 0
 	s := uint(grid.size - 1)
 	if x == 0 && y == 0 {
-		count += b2i(grid.data[x][y+1])   // right
-		count += b2i(grid.data[x+1][y])   // below
-		count += b2i(grid.data[x+1][y+1]) // diagonal
+		count += b2i(grid.data[x][y+1])
+		count += b2i(grid.data[x+1][y])
+		count += b2i(grid.data[x+1][y+1])
 		return uint(count)
 	}
 	if x == 0 && y == s {
@@ -124,12 +124,8 @@ func CountAliveneighbours(x uint, y uint, grid Grid) uint {
 	return 0
 }
 
-func RunGeneration(g Grid) Grid {
-	return g
-
-}
-
 func main() {
+
 	grid := NewGrid(3)
 	fmt.Println(grid)
 	grid.data[0][1] = true
